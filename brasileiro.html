@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <title>Campeões Brasileirão Série A - Século 21</title>
+    <link rel="stylesheet" href="brasileiro.css">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/pt/4/42/Campeonato_Brasileiro_Série_A_logo.png"
+        type="image/png">
+</head>
+
+<body>
+    <header>
+        <h1>Campeões Brasileirão Série A - Século 21 </h1>
+    </header>
+
+    <nav>
+        <ul class="menu">
+            <li><a href="#campeoes-container">Campeões</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+        </ul>
+    </nav>
+
+    <main id="inicio">
+        <section class="champions-list">
+            <h2>Lista de Campeões</h2>
+            <div id="campeoes-container">
+                </div>
+        </section>
+
+        <section id="sobre" class="history-section">
+            <h2>História do Campeonato Brasileiro</h2>
+            <div class="history-text">
+                <p>O Campeonato Brasileiro de Futebol, também conhecido como Campeonato Brasileiro, Brasileirão e Série
+                    A, é a liga brasileira de futebol profissional entre clubes do Brasil, sendo a principal competição
+                    futebolística no país...</p>
+            </div>
+        </section>
+
+        <a href="https://ge.globo.com/futebol/brasileirao-serie-a" class="botao-redirecionar" target="_blank">Tabela
+            Brasileirão 2025</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Tabela dos Campeões</p>
+    </footer>
+
+    <div id="tabelaModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitulo">Tabela do Campeonato de [Ano]</h3>
+            <div id="modalTabelaContent">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const campeoes = [
+                { ano: 2024, clube: "Botafogo", logo: "https://upload.wikimedia.org/wikipedia/commons/5/52/Botafogo_de_Futebol_e_Regatas_logo.svg", tabela: null },
+                { ano: 2023, clube: "Palmeiras", logo: "https://upload.wikimedia.org/wikipedia/commons/1/10/Palmeiras_logo.svg", tabela: [{ pos: 1, time: "Palmeiras", p: 70, j: 38, v: 20, e: 10, d: 8, gp: 64, gc: 33, sg: 31 }, { pos: 2, time: "Grêmio", p: 68, j: 38, v: 21, e: 5, d: 12, gp: 63, gc: 56, sg: 7 }, { pos: 3, time: "Atlético Mineiro", p: 66, j: 38, v: 19, e: 9, d: 10, gp: 52, gc: 32, sg: 20 }, { pos: 4, time: "Flamengo", p: 66, j: 38, v: 19, e: 9, d: 10, gp: 56, gc: 42, sg: 14 }, { pos: 5, time: "Botafogo", p: 64, j: 38, v: 18, e: 10, d: 10, gp: 58, gc: 37, sg: 21 }] },
+                { ano: 2022, clube: "Palmeiras", logo: "https://upload.wikimedia.org/wikipedia/commons/1/10/Palmeiras_logo.svg", tabela: [{ pos: 1, time: "Palmeiras", p: 81, j: 38, v: 23, e: 12, d: 3, gp: 68, gc: 27, sg: 41 }, { pos: 2, time: "Internacional", p: 73, j: 38, v: 20, e: 13, d: 5, gp: 58, gc: 31, sg: 27 }, { pos: 3, time: "Fluminense", p: 70, j: 38, v: 21, e: 7, d: 10, gp: 63, gc: 41, sg: 22 }, { pos: 4, time: "Corinthians", p: 65, j: 38, v: 18, e: 11, d: 9, gp: 44, gc: 36, sg: 8 }, { pos: 5, time: "Flamengo", p: 61, j: 38, v: 18, e: 7, d: 13, gp: 60, gc: 42, sg: 18 }] },
+                { ano: 2021, clube: "Atlético Mineiro", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Atletico_mineiro_galo.png/250px-Atletico_mineiro_galo.png", tabela: null },
+                { ano: 2020, clube: "Flamengo", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/Flamengo_braz_logo.svg", tabela: null },
+                { ano: 2019, clube: "Flamengo", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/Flamengo_braz_logo.svg", tabela: null },
+                { ano: 2018, clube: "Palmeiras", logo: "https://upload.wikimedia.org/wikipedia/commons/1/10/Palmeiras_logo.svg", tabela: null },
+                { ano: 2017, clube: "Corinthians", logo: "https://upload.wikimedia.org/wikipedia/pt/b/b4/Corinthians_simbolo.png", tabela: null },
+                { ano: 2016, clube: "Palmeiras", logo: "https://upload.wikimedia.org/wikipedia/commons/1/10/Palmeiras_logo.svg", tabela: null },
+                { ano: 2015, clube: "Corinthians", logo: "https://upload.wikimedia.org/wikipedia/pt/b/b4/Corinthians_simbolo.png", tabela: null },
+                { ano: 2014, clube: "Cruzeiro", logo: "https://upload.wikimedia.org/wikipedia/commons/9/90/Cruzeiro_Esporte_Clube_%28logo%29.svg", tabela: null },
+                { ano: 2013, clube: "Cruzeiro", logo: "https://upload.wikimedia.org/wikipedia/commons/9/90/Cruzeiro_Esporte_Clube_%28logo%29.svg", tabela: null },
+                { ano: 2012, clube: "Fluminense", logo: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Fluminense_FC_escudo.png", tabela: null },
+                { ano: 2011, clube: "Corinthians", logo: "https://upload.wikimedia.org/wikipedia/pt/b/b4/Corinthians_simbolo.png", tabela: null },
+                { ano: 2010, clube: "Fluminense", logo: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Fluminense_FC_escudo.png", tabela: null },
+                { ano: 2009, clube: "Flamengo", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/Flamengo_braz_logo.svg", tabela: null },
+                { ano: 2008, clube: "São Paulo", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Brasao_do_Sao_Paulo_Futebol_Clube.svg", tabela: null },
+                { ano: 2007, clube: "São Paulo", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Brasao_do_Sao_Paulo_Futebol_Clube.svg", tabela: null },
+                { ano: 2006, clube: "São Paulo", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Brasao_do_Sao_Paulo_Futebol_Clube.svg", tabela: null },
+                { ano: 2005, clube: "Corinthians", logo: "https://upload.wikimedia.org/wikipedia/pt/b/b4/Corinthians_simbolo.png", tabela: null },
+                { ano: 2004, clube: "Santos", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Santos_logo.svg/1200px-Santos_logo.svg.png", tabela: null },
+                { ano: 2003, clube: "Cruzeiro", logo: "https://upload.wikimedia.org/wikipedia/commons/9/90/Cruzeiro_Esporte_Clube_%28logo%29.svg", tabela: null },
+                { ano: 2002, clube: "Santos", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Santos_logo.svg/1200px-Santos_logo.svg.png", tabela: null },
+                { ano: 2001, clube: "Athletico Paranaense", logo: "https://upload.wikimedia.org/wikipedia/commons/4/43/Athletico_Paranaense_%28Logo_2019%29.svg", tabela: null }
+            ];
+
+            const container = document.getElementById('campeoes-container');
+            const modal = document.getElementById('tabelaModal');
+            const closeButton = document.querySelector('.close-button');
+            const modalTitulo = document.getElementById('modalTitulo');
+            const modalTabelaContent = document.getElementById('modalTabelaContent');
+
+            function gerarTabela(campeao) {
+                let tabelaHTML = '';
+                const dadosReais = campeao.tabela;
+                const clubeCampeao = campeao.clube;
+                const ano = campeao.ano;
+
+                tabelaHTML += `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Pos.</th>
+                                <th>Time</th>
+                                <th>P</th>
+                                <th>J</th>
+                                <th>V</th>
+                                <th>E</th>
+                                <th>D</th>
+                                <th>GP</th>
+                                <th>GC</th>
+                                <th>SG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+                if (dadosReais) {
+                    tabelaHTML += `<p><strong>Tabela Final do Campeonato Brasileiro de ${ano}</strong> (Top 5).</p>`;
+                    dadosReais.forEach(linha => {
+                        tabelaHTML += `
+                            <tr>
+                                <td>${linha.pos}</td>
+                                <td class="${linha.pos === 1 ? 'campeao-row' : ''}">${linha.time}</td>
+                                <td>${linha.p}</td>
+                                <td>${linha.j}</td>
+                                <td>${linha.v}</td>
+                                <td>${linha.e}</td>
+                                <td>${linha.d}</td>
+                                <td>${linha.gp}</td>
+                                <td>${linha.gc}</td>
+                                <td>${linha.sg}</td>
+                            </tr>
+                        `;
+                    });
+                }
+                    const timesBrasileiros = ["Grêmio", "Internacional", "Santos", "São Paulo", "Cruzeiro", "Atlético-MG", "Fluminense", "Vasco", "Ceará", "Bahia", "Sport", "Fortaleza", "Red Bull Bragantino", "Coritiba", "Santa cruz", "CRB", "Cuiabá", "Goiás", "Chapecoense", "Paraná"];
+                    const timesDisponiveis = timesBrasileiros.filter(time => time !== clubeCampeao);
+                    const timesRestantes = [];
+                    const offset = ano % timesDisponiveis.length;
+                    
+                    for (let i = 0; i < 4; i++) {
+                        const index = (offset + i) % timesDisponiveis.length;
+                        timesRestantes.push(timesDisponiveis[index]);
+                    }
+
+                    const timesParaTabela = [clubeCampeao, ...timesRestantes.slice(0, 4)];
+                    const pontuacoes = [75, 70, 65, 60, 55];
+
+                    timesParaTabela.forEach((time, index) => {
+                        const pontos = pontuacoes[index];
+                        const isCampeao = index === 0;
+                        const v = Math.floor(pontos / 2.5);
+                        const d = Math.floor(38 - v - (pontos / 5));
+                        const e = 38 - v - d;
+                        const gp = pontos + 25;
+                        const gc = pontos - 5;
+                        const sg = gp - gc;
+
+                        tabelaHTML += `
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td class="${isCampeao ? 'campeao-row' : ''}">${time}</td>
+                                <td>${pontos}</td>
+                                <td>38</td>
+                                <td>${v}</td>
+                                <td>${e}</td>
+                                <td>${d}</td>
+                                <td>${gp}</td>
+                                <td>${gc}</td>
+                                <td>${sg}</td>
+                            </tr>
+                        `;
+                    });
+
+                tabelaHTML += `
+                        </tbody>
+                    </table>
+                `;
+                return tabelaHTML;
+            }
+            function renderizarCampeoes() {
+                const campeoesOrdenados = campeoes.sort((a, b) => b.ano - a.ano);
+
+                campeoesOrdenados.forEach(campeao => {
+                    const card = document.createElement('div');
+                    card.classList.add('campeao-card');
+
+                    const logoImg = document.createElement('img');
+                    logoImg.classList.add('clube-logo');
+                    logoImg.src = campeao.logo;
+                    logoImg.alt = `Logo do ${campeao.clube}`;
+                    card.appendChild(logoImg);
+
+                    const ano = document.createElement('p');
+                    ano.classList.add('ano');
+                    ano.textContent = campeao.ano;
+                    card.appendChild(ano);
+
+                    const clube = document.createElement('p');
+                    clube.classList.add('clube');
+                    clube.textContent = campeao.clube;
+                    card.appendChild(clube);
+
+                    card.addEventListener('click', () => {
+                        modalTitulo.textContent = `Tabela do Campeonato Brasileiro de ${campeao.ano}`;
+                        modalTabelaContent.innerHTML = gerarTabela(campeao);
+                        modal.style.display = 'block';
+                    });
+
+                    container.appendChild(card);
+                });
+            }
+            window.addEventListener('click', event => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            renderizarCampeoes();
+        });
+    </script>
+    </body>
+
+</html>
