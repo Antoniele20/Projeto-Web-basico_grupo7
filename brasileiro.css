@@ -1,0 +1,365 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- NOVAS CLASSES DE TAMANHO DE FONTE (PARA INTERAÇÃO) --- */
+body.font-small {
+    font-size: 0.9em;
+}
+
+body.font-medium {
+    font-size: 1em; /* Padrão */
+}
+
+body.font-large {
+    font-size: 1.15em;
+}
+/* ----------------------------------------------------------- */
+
+header {
+    background-color: #004d40;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+/* 🏈 FLEXBOX: Navegação */
+nav {
+    background-color: #00c853;
+    padding: 10px 0;
+    /* Usa Flexbox para centralizar o menu */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    /* Faz a lista ser uma linha flexível */
+    display: flex;
+    gap: 15px; /* Define espaçamento entre os itens do menu */
+}
+
+.menu li {
+    display: inline-block; /* Mantido por compatibilidade, mas o flex já faz o trabalho */
+    /* Removido o margin: 0 15px; em favor do gap no .menu */
+    margin: 0;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: #004d40;
+    border-bottom: 2px solid #00c853;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* 🏆 FLEXBOX: Cards de Campeões */
+#campeoes-container {
+    /* Mantido o Flexbox, mas o justify-content: center foi movido para o Flex */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.campeao-card {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    width: 160px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+    
+    /* Opcional: Usar Flexbox para alinhar conteúdo verticalmente dentro do card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.campeao-card:hover {
+    background-color: #f9f9f9;
+    transform: translateY(-3px);
+}
+
+.clube-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.ano {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #004d40;
+    margin: 5px 0;
+}
+
+.clube {
+    font-size: 1rem;
+    color: #333;
+}
+
+.history-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px dashed #bbb;
+}
+
+.history-text p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.botao-redirecionar {
+    display: block;
+    width: 90%;
+    max-width: 300px;
+    margin: 30px auto;
+    padding: 15px 20px;
+    background-color: #00c853;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.botao-redirecionar:hover {
+    background-color: #00b347;
+}
+
+footer {
+    background-color: #004d40;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+}
+
+/* Estilos do Formulário (Newsletter) E Customização */
+.newsletter-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #e8f5e9;
+    border-radius: 8px;
+    border: 1px solid #c8e6c9;
+    text-align: center;
+}
+
+.newsletter-section h3 {
+    color: #004d40;
+    margin-bottom: 15px;
+}
+
+/* 🥅 GRID: Formulário */
+#newsletter-form {
+    display: grid;
+    /* Define duas colunas: a primeira para os campos e a segunda para o botão em telas maiores */
+    /* Simplificado para alinhamento central */
+    grid-template-columns: 1fr; 
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+    align-items: end; /* Alinha o botão com a base dos inputs */
+}
+
+/* Ajusta a largura total para que a Grid funcione para todos os elementos */
+#newsletter-form .form-group {
+    max-width: none;
+    margin-bottom: 0; /* Removido margin-bottom do form-group em favor do grid gap */
+}
+
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #004d40;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+/* Estilo para select e input[type="color"] */
+.input-style { 
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group input[type="color"] {
+    height: 40px;
+    padding: 3px;
+}
+
+.botao-submit {
+    padding: 10px 20px;
+    background-color: #00c853;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    width: 100%; /* Ocupa a largura total na Grid */
+    /* Para telas maiores, o botão pode ser colocado em uma linha separada para manter a clareza */
+}
+
+.botao-submit:hover {
+    background-color: #00b347;
+}
+
+
+/* Estilos do Modal (sem alterações de layout significativas aqui) */
+/* Estilos do Modal (sem alterações de layout significativas aqui) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 25px;
+    border: 1px solid #888;
+    /* Ajuste para que o modal da tabela seja mais largo */
+    max-width: 90%; 
+    width: 700px;
+    border-radius: 8px;
+}
+
+/* ⚽ NOVO CSS: Estilização da Tabela no Modal */
+#modalTabelaContent p {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #004d40;
+}
+
+#modalTabelaContent table {
+    width: 100%;
+    border-collapse: collapse; /* Remove o espaço entre as bordas das células */
+    margin-top: 10px;
+}
+
+#modalTabelaContent thead {
+    background-color: #00c853; /* Fundo verde vibrante */
+    color: white;
+}
+
+#modalTabelaContent th,
+#modalTabelaContent td {
+    padding: 10px 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+#modalTabelaContent th {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+/* Estilo para as linhas pares (zebra) */
+#modalTabelaContent tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Destaque para a linha do campeão (posição 1) */
+.campeao-row {
+    font-weight: bold;
+    color: #004d40; /* Verde escuro */
+    background-color: #c8e6c9; /* Verde claro suave */
+    /* Garante que o nome do time campeão esteja alinhado à esquerda para leitura */
+    text-align: left !important; 
+    padding-left: 15px !important;
+}
+
+/* Alinhamento de colunas de texto (Time) */
+#modalTabelaContent td:nth-child(2) {
+    text-align: left;
+    padding-left: 10px;
+}
+
+/* Estilo da célula de posição */
+#modalTabelaContent td:nth-child(1) {
+    font-weight: bold;
+}
+
+/* Estilos de Fechamento de Modal */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Media Query para responsividade da tabela em telas menores */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+    }
+    
+    /* Reduz o padding e o tamanho da fonte em telas pequenas para caber a tabela */
+    #modalTabelaContent th,
+    #modalTabelaContent td {
+        padding: 6px 4px;
+        font-size: 0.75rem;
+    }
+}
+/* Fim do NOVO CSS */

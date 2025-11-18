@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <title>Formulario - Brasileirão Série A</title>
+    <link rel="stylesheet" href="brasileiro.css">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/pt/4/42/Campeonato_Brasileiro_Série_A_logo.png"
+        type="image/png">
+</head>
+
+<body>
+    <header>
+        <h1>Assine a Newsletter do Brasileirão</h1>
+    </header>
+
+    <nav>
+        <ul class="menu">
+            <li><a href="brasileiro.html">Início</a></li>
+            <li><a href="brasileiro.html#campeoes-container">Campeões</a></li>
+            <li><a href="brasileiro.html#sobre">Sobre</a></li>
+            <li><a href="formulario.html">Formulario</a></li>
+            <li><a href="customizacao.html">Customizar</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="formulario" class="newsletter-section" style="max-width: 600px; margin: 40px auto;">
+            <h3>Assine nossa Newsletter e receba as últimas notícias! </h3>
+            <form id="newsletter-form">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="submit" class="botao-submit">Enviar</button>
+            </form>
+            <p id="form-message" style="display: none; margin-top: 15px; font-weight: bold; font-size: 1.1em;"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Tabela dos Campeões</p>
+    </footer>
+
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('newsletter-form');
+            const formMessage = document.getElementById('form-message');
+
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const nome = document.getElementById('nome').value;
+                const email = document.getElementById('email').value;
+
+                formMessage.style.display = 'block';
+                formMessage.style.color = '#004d40';
+                formMessage.textContent = `Obrigado, ${nome}! Seu email (${email}) foi registrado para a nossa newsletter.`;
+                form.reset();
+            });
+        });
+    </script>
+</body>
+
+</html>
